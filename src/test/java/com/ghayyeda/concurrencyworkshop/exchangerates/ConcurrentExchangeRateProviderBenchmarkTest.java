@@ -3,6 +3,7 @@ package com.ghayyeda.concurrencyworkshop.exchangerates;
 import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
@@ -21,8 +22,9 @@ import static org.openjdk.jmh.annotations.Mode.AverageTime;
 
 @State(Scope.Benchmark)
 @BenchmarkMode(AverageTime)
-@Warmup(iterations = 3)
-@Measurement(iterations = 3)
+@Fork(1)
+@Warmup(iterations = 1, time = 5)
+@Measurement(iterations = 1, time = 5)
 public class ConcurrentExchangeRateProviderBenchmarkTest {
 
     private final ConcurrentExchangeRateProvider concurrentExchangeRateProvider = new ConcurrentExchangeRateProvider(
