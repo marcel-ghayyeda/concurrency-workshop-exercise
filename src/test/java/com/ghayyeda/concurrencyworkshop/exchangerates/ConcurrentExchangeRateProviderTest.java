@@ -146,7 +146,7 @@ class ConcurrentExchangeRateProviderTest {
     @CsvSource({
             "1,6,6,6",
             "6,6,6,6",
-            //"0,1,1,1" // bonus ;)
+            "0,1,1,1" // bonus ;)
     })
     void shouldNotAllowTooManyConcurrentRequestsToRepositories(int limit1, int limit2, int limit3, int limit4) {
         ConcurrentExchangeRateProvider concurrentSummer = new ConcurrentExchangeRateProvider(
