@@ -1,6 +1,5 @@
 package com.ghayyeda.concurrencyworkshop.exchangerates;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -116,7 +115,6 @@ class ConcurrentExchangeRateProviderTest {
         };
     }
 
-    @Disabled
     @Test
     //Bonus test for performance checking
     void shouldNotAttemptToFetchFromRepositoriesWhenAtLeastOneIsAtCapacity(@Mock BankExchangesRatesRepository repository1) {
@@ -146,7 +144,7 @@ class ConcurrentExchangeRateProviderTest {
     @CsvSource({
             "1,6,6,6",
             "6,6,6,6",
-            //"0,1,1,1" // bonus ;)
+            "0,1,1,1" // bonus ;)
     })
     void shouldNotAllowTooManyConcurrentRequestsToRepositories(int limit1, int limit2, int limit3, int limit4) {
         ConcurrentExchangeRateProvider concurrentSummer = new ConcurrentExchangeRateProvider(
