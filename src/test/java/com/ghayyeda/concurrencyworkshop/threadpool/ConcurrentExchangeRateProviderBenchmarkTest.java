@@ -3,7 +3,6 @@ package com.ghayyeda.concurrencyworkshop.threadpool;
 import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
@@ -16,7 +15,6 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import java.util.concurrent.ExecutionException;
-import java.util.logging.Logger;
 
 
 import static org.openjdk.jmh.annotations.Mode.AverageTime;
@@ -27,16 +25,14 @@ import static org.openjdk.jmh.annotations.Mode.AverageTime;
 @Measurement(iterations = 3)
 public class ConcurrentExchangeRateProviderBenchmarkTest {
 
-    private static final Logger log = Logger.getLogger(ConcurrentExchangeRateProviderBenchmarkTest.class.getName());
-
     private final ConcurrentExchangeRateProvider concurrentExchangeRateProvider = new ConcurrentExchangeRateProvider(
-            () -> sleepAndReturn(500, 2),
+            () -> sleepAndReturn(2),
             6,
-            () -> sleepAndReturn(500, 1),
+            () -> sleepAndReturn(1),
             6,
-            () -> sleepAndReturn(500, 3),
+            () -> sleepAndReturn(3),
             6,
-            () -> sleepAndReturn(500, 7),
+            () -> sleepAndReturn(7),
             6
     );
 
@@ -60,17 +56,13 @@ public class ConcurrentExchangeRateProviderBenchmarkTest {
         blackhole.consume(concurrentExchangeRateProvider.getExchangeRate().get());
     }
 
-    private double sleepAndReturn(int sleepMillis, double returnValue) {
-        sleep(sleepMillis);
-        return returnValue;
-    }
-
-    private void sleep(int millis) {
+    private double sleepAndReturn(double returnValue) {
         try {
-            Thread.sleep(millis);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        return returnValue;
     }
 
 }
