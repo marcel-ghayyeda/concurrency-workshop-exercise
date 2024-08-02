@@ -1,4 +1,4 @@
-package com.ghayyeda.concurrencyworkshop.threadpool;
+package com.ghayyeda.concurrencyworkshop.exchangerates;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

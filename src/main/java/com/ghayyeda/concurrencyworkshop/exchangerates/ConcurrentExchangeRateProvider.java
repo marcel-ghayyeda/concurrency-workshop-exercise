@@ -1,4 +1,4 @@
-package com.ghayyeda.concurrencyworkshop.threadpool;
+package com.ghayyeda.concurrencyworkshop.exchangerates;
 
 import java.util.concurrent.Future;
 
