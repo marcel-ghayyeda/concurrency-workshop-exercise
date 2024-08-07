@@ -1,6 +1,5 @@
 package com.ghayyeda.concurrencyworkshop.multipleservers;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
@@ -40,7 +39,6 @@ class DataFetcherTest {
         assertEquals("fast-server", result.get(300, TimeUnit.MILLISECONDS));
     }
 
-    @Disabled
     @Test
     void shouldReturnDataFromWorkingServerWhenOtherFails() throws ExecutionException, InterruptedException, TimeoutException {
         //given
