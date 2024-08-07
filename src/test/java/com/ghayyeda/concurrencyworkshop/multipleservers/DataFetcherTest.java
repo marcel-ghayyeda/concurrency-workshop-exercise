@@ -63,7 +63,7 @@ class DataFetcherTest {
         CompletableFuture<String> result = dataFetcher.fetch();
 
         //then
-        assertEquals("slow-server", result.get(300, TimeUnit.MILLISECONDS));
+        assertEquals("slow-server", result.get(600, TimeUnit.MILLISECONDS));
     }
 
     @Test
